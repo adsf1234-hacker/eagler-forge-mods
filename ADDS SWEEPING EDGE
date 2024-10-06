@@ -1,0 +1,42 @@
+// Step 1: Define the Sweeping Edge Enchantment
+ModAPI.addEnchantment({
+    id: "sweeping_edge",         // Unique ID for the enchantment
+    name: "Sweeping Edge",       // Name of the enchantment
+    maxLevel: 3,                 // Maximum level of the enchantment
+    weight: 10,                  // Weight for enchanting table (determines rarity)
+    description: "Increases sweeping attack damage.",  // Tooltip description
+    type: "weapon"               // Applies to weapons (e.g., swords)
+});
+
+// Step 2: Create Enchanted Book for Sweeping Edge
+ModAPI.addItem({
+    id: "book_sweeping_edge",    // Unique ID for the enchanted book
+    name: "Enchanted Book (Sweeping Edge)",  // Display name
+    texture: "book_enchanted",   // Use available enchanted book texture
+    enchantment: "sweeping_edge", // Link it to the Sweeping Edge enchantment
+    level: 1                     // Default level of enchantment in the book
+});
+
+// Step 3: Add Crafting Recipe for the Sweeping Edge Enchantment Book
+ModAPI.addRecipe({
+    output: {
+        id: "book_sweeping_edge",  // The enchanted book as output
+        count: 1                   // Quantity of output
+    },
+    pattern: [
+        " E ",                      // Crafting pattern
+        " B ",                      // E is emerald, B is book
+        "   "
+    ],
+    key: {
+        E: "emerald",               // Use emerald as the enchanting material
+        B: "book"                   // Regular book as the base item
+    }
+});
+
+// Optional: You can add it as loot instead of crafting (if supported by your version)
+// ModAPI.addLootTableEntry({
+//     item: sweepingEdge,            // The enchanted book
+//     count: 1,                      // Quantity
+//     chance: 0.1                    // 10% chance to drop
+// });
